@@ -25,13 +25,14 @@ export default function Counter() {
   // padStart só funciona em string, por isso o toString e serve para definir que o número deve ser exibido com x algarismos (2 nesse caso)
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className='App'>
+      <header className='App-header'>
         <h1>Pomodoro App</h1>
       </header>
       <span>{minutes.toString().padStart(2, "0")}</span>
       <span>:</span>
       <span>{secondsShow.toString().padStart(2, "0")}</span>
+      <h1>Alteração</h1>
     </div>
   );
 }
