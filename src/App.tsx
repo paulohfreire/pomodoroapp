@@ -1,4 +1,12 @@
 import { useEffect, useState } from "react";
+import {
+  FiArrowDown,
+  FiArrowUp,
+  FiPause,
+  FiPlay,
+  FiRefreshCcw,
+} from "react-icons/fi";
+import "./styles.css";
 
 const INITIAL_TIME = 25 * 60; //25 minutos em segundos
 export default function Counter() {
@@ -25,13 +33,57 @@ export default function Counter() {
   // padStart só funciona em string, por isso o toString e serve para definir que o número deve ser exibido com x algarismos (2 nesse caso)
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Pomodoro App</h1>
-      </header>
-      <span>{minutes.toString().padStart(2, "0")}</span>
-      <span>:</span>
-      <span>{secondsShow.toString().padStart(2, "0")}</span>
+    <div id="container">
+      <div id="app">
+        <div>
+          <header className="main-title">Pomodoro App</header>
+          <div className="length-control">
+            <div id="break-label">Break time (min)</div>
+            <button className="btn-level" id="break-decrement" value="-">
+              <FiArrowDown size={24} title={"Decrease"} />
+            </button>
+            <div className="btn-level" id="break-length">
+              5
+            </div>
+            <button className="btn-level" id="break-increment" value="+">
+              <FiArrowUp size={24} title={"Increase"} />
+            </button>
+          </div>
+          <div className="length-control">
+            <div id="session-label">Session Time (min)</div>
+            <button className="btn-level" id="session-decrement" value="-">
+              <FiArrowDown size={24} title={"Decrease"} />
+            </button>
+            <div className="btn-level" id="session-length">
+              25
+            </div>
+            <button className="btn-level" id="session-increment" value="+">
+              <FiArrowUp size={24} title={"Increase"} />
+            </button>
+          </div>
+
+          <div className="timer">
+            <div className="timer-wrapper">
+              <div id="timer-label">Session</div>
+              <div id="time-left">25:00</div>
+            </div>
+          </div>
+          <div className="timer-control">
+            <button id="start_stop">
+              <FiPlay size={24} title={"Start"} />
+              <FiPause size={24} title={"Pause"} />
+            </button>
+            <button id="reset">
+              <FiRefreshCcw size={24} title={"Reset"} />
+            </button>
+          </div>
+          <audio
+            id="beep"
+            preload="auto"
+            src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+          ></audio>
+        </div>
+      </div>
     </div>
   );
 }
